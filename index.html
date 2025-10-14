@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رزومه عرفان عبدالهی</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --accent: #ffd700;
+            --accent2: #ff6b6b;
+            --text: #ffffff;
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-dark: rgba(0, 0, 0, 0.2);
+        }
+
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+        /* Snap Sections - Compact */
+        .snap-section {
+            height: 100vh;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 10px 0;
+            position: relative;
+        }
+
+        /* Navigation - Bottom Dock */
+        .nav-dock {
+            position: fixed;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            width: auto;
+            min-width: 280px;
+            max-width: 90%;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 25px var(--glass-dark);
+        }
+
+        .nav-dock-links {
+            display: flex;
+            gap: 8px;
+        }
+
+        .nav-dock-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 10px 15px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            min-width: 55px;
+        }
+
+        .nav-dock-links a i {
+            font-size: 1.1rem;
+        }
+
+        .nav-dock-links a span {
+            font-size: 0.7rem;
+        }
+
+        .nav-dock-links a:hover,
+        .nav-dock-links a.active {
+            background: linear-gradient(45deg, var(--accent2), var(--accent));
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        /* Header Section - Compact */
+        .header-compact {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .text-main {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(45deg, var(--accent), var(--accent2), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        .subtitle-compact {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 25px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* Compact Sections */
+        .section-compact {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 15px 0;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .section-compact:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px var(--glass-dark);
+        }
+
+        .section-title-compact {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+        }
+
+        /* About Compact */
+        .about-compact {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .profile-img-compact {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--accent), var(--accent2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            overflow: hidden;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .profile-img-compact img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-text-compact {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Skills Compact */
+        .skills-grid-compact {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-item-compact {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 15px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item-compact:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.05);
+        }
+
+        .skill-name-compact {
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .skill-bar-compact {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skill-level-compact {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            transition: width 1s ease-in-out;
+        }
+
+        /* Experience Compact */
+        .timeline-compact {
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .timeline-compact::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent), var(--accent2));
+        }
+
+        .timeline-item-compact {
+            position: relative;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item-compact:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .timeline-item-compact::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 22px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent2);
+            border: 2px solid var(--accent);
+        }
+
+        .timeline-date-compact {
+            color: var(--accent);
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* Contact Compact */
+        .contact-grid-compact {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 12px;
+        }
+
+        .contact-item-compact {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item-compact:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.05);
+        }
+
+        .contact-icon-compact {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        /* Buttons Compact */
+        .btn-compact {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, var(--accent2), var(--accent));
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .btn-compact:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
+        }
+
+        /* Scroll Indicator Compact */
+        .scroll-indicator-compact {
+            position: fixed;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .scroll-dot-compact {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .scroll-dot-compact.active {
+            background: var(--accent);
+            transform: scale(1.3);
+            border-color: var(--accent2);
+        }
+
+        /* Footer Compact */
+        .footer-compact {
+            text-align: center;
+            padding: 25px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+        }
+
+        /* Animation Classes */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .text-main {
+                font-size: 2.2rem;
+            }
+
+            .subtitle-compact {
+                font-size: 1rem;
+            }
+
+            .section-compact {
+                padding: 20px;
+                margin: 10px 0;
+            }
+
+            .section-title-compact {
+                font-size: 1.5rem;
+            }
+
+            .about-compact {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .profile-img-compact {
+                width: 100px;
+                height: 100px;
+            }
+
+            .skills-grid-compact {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .contact-grid-compact {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nav-dock {
+                bottom: 10px;
+                padding: 10px 15px;
+                min-width: 250px;
+            }
+
+            .nav-dock-links a {
+                padding: 8px 12px;
+                min-width: 50px;
+            }
+
+            .nav-dock-links a span {
+                font-size: 0.65rem;
+            }
+
+            .snap-section {
+                height: auto;
+                min-height: 100vh;
+                scroll-snap-align: none;
+            }
+
+            html {
+                scroll-snap-type: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .text-main {
+                font-size: 1.8rem;
+            }
+
+            .skills-grid-compact {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid-compact {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-dock-links {
+                gap: 5px;
+            }
+
+            .nav-dock-links a {
+                padding: 6px 8px;
+                min-width: 45px;
+            }
+
+            .nav-dock-links a span {
+                font-size: 0.6rem;
+            }
+        }
+
+        /* Tablet Optimizations */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .container {
+                padding: 20px;
+            }
+
+            .skills-grid-compact {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .contact-grid-compact {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body dir="rtl">
+    <!-- Navigation Dock -->
+    <nav class="nav-dock">
+        <div class="nav-dock-links">
+            <a href="#home" class="active">
+                <i>🏠</i>
+                <span>خانه</span>
+            </a>
+            <a href="#about">
+                <i>👤</i>
+                <span>درباره</span>
+            </a>
+            <a href="#skills">
+                <i>💻</i>
+                <span>مهارت‌ها</span>
+            </a>
+            <a href="#experience">
+                <i>📊</i>
+                <span>سوابق</span>
+            </a>
+            <a href="#contact">
+                <i>📞</i>
+                <span>تماس</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator-compact">
+        <div class="scroll-dot-compact active" data-section="home"></div>
+        <div class="scroll-dot-compact" data-section="about"></div>
+        <div class="scroll-dot-compact" data-section="skills"></div>
+        <div class="scroll-dot-compact" data-section="experience"></div>
+        <div class="scroll-dot-compact" data-section="contact"></div>
+    </div>
+
+    <!-- Home Section -->
+    <section id="home" class="snap-section">
+        <div class="container">
+            <header class="header-compact">
+                <p class="text-main" dir="ltr">ERFAN<br>ABDOLLAHI</p>
+                <p class="subtitle-compact">توسعه‌دهنده وب و برنامه‌نویس</p>
+                <a href="#contact" class="btn-compact">تماس با من</a>
+            </header>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="snap-section">
+        <div class="container">
+            <div class="section-compact fade-in-up">
+                <h2 class="section-title-compact">درباره من</h2>
+                <div class="about-compact">
+                    <div class="profile-img-compact">
+                        <img src="-2147483648_-211830.jpg" alt="عرفان عبدالهی">
+                    </div>
+                    <div class="about-text-compact">
+                        <p>سلام! من عرفان عبدالهی هستم، یک توسعه‌دهنده پرشور وب با تجربه در ایجاد برنامه‌های مدرن و کاربرپسند.</p>
+                        <br>
+                        <p>با تخصص در JavaScript, React, Node.js و Python، همیشه به دنبال ایجاد تجربیات دیجیتال منحصر به فرد هستم.</p>
+                        <br>
+                        <a href="download.html" class="btn-compact">دانلود رزومه</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="snap-section">
+        <div class="container">
+            <div class="section-compact fade-in-up">
+                <h2 class="section-title-compact">مهارت‌ها</h2>
+                <div class="skills-grid-compact">
+                    <div class="skill-item-compact">
+                        <div class="skill-name-compact">جاوا اسکریپت</div>
+                        <div class="skill-bar-compact">
+                            <div class="skill-level-compact" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item-compact">
+                        <div class="skill-name-compact">ری اکت js</div>
+                        <div class="skill-bar-compact">
+                            <div class="skill-level-compact" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item-compact">
+                        <div class="skill-name-compact">نود js</div>
+                        <div class="skill-bar-compact">
+                            <div class="skill-level-compact" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item-compact">
+                        <div class="skill-name-compact">پایتون</div>
+                        <div class="skill-bar-compact">
+                            <div class="skill-level-compact" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item-compact">
+                        <div class="skill-name-compact">ظراحی دیزاین</div>
+                        <div class="skill-bar-compact">
+                            <div class="skill-level-compact" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item-compact">
+                        <div class="skill-name-compact">دیتابیس</div>
+                        <div class="skill-bar-compact">
+                            <div class="skill-level-compact" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="snap-section">
+        <div class="container">
+            <div class="section-compact fade-in-up">
+                <h2 class="section-title-compact">سوابق کاری</h2>
+                <div class="timeline-compact">
+                    <div class="timeline-item-compact">
+                        <div class="timeline-date-compact">حال حاضر - 2022</div>
+                        <h3 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; margin-bottom: 8px;">مهندسی کامپیوتر - کاردانی</h3>
+                        <p style="color: var(--accent); margin-bottom: 8px; font-size: 0.9rem;">دانشگاه آزاد واحد ایرانشهر</p>
+                        <p style="font-size: 0.85rem;">توسعه اپلیکیشن‌های تحت وب با React و TypeScript</p>
+                    </div>
+                    <div class="timeline-item-compact">
+                        <div class="timeline-date-compact">حال حاضر - 2020</div>
+                        <h3 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; margin-bottom: 8px;">شبکه و امنیت سایبری</h3>
+                        <p style="color: var(--accent); margin-bottom: 8px; font-size: 0.9rem;">دانشگاه آزاد واحد ایرانشهر</p>
+                        <p style="font-size: 0.85rem;">مدیریت شبکه و امنیت سایبری</p>
+                    </div>
+                    <div class="timeline-item-compact">
+                        <div class="timeline-date-compact">حال حاضر - 2015</div>
+                        <h3 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; margin-bottom: 8px;">توسعه‌دهنده وب</h3>
+                        <p style="color: var(--accent); margin-bottom: 8px; font-size: 0.9rem;">هنرستان امیر محمود جهانی</p>
+                        <p style="font-size: 0.85rem;">پیاده‌سازی وبسایت‌های شرکتی و فروشگاهی</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="snap-section">
+        <div class="container">
+            <div class="section-compact fade-in-up">
+                <h2 class="section-title-compact">تماس با من</h2>
+                <div class="contact-grid-compact">
+                    <div class="contact-item-compact">
+                        <div class="contact-icon-compact">📧</div>
+                        <h3 style="font-family: 'Orbitron', sans-serif; font-size: 0.9rem;">ایمیل</h3>
+                        <p style="font-size: 0.8rem;">er.ab1383@gmail.com</p>
+                    </div>
+                    <div class="contact-item-compact">
+                        <div class="contact-icon-compact">📱</div>
+                        <h3 style="font-family: 'Orbitron', sans-serif; font-size: 0.9rem;">تلفن</h3>
+                        <p style="font-size: 0.8rem;">09944114504</p>
+                    </div>
+                    <div class="contact-item-compact">
+                        <div class="contact-icon-compact">📍</div>
+                        <h3 style="font-family: 'Orbitron', sans-serif; font-size: 0.9rem;">آدرس</h3>
+                        <p style="font-size: 0.8rem;">سیستان و بلوچستان - شهرستان ایرانشهر</p>
+                    </div>
+                    <div class="contact-item-compact">
+                        <div class="contact-icon-compact">💼</div>
+                        <h3 style="font-family: 'Orbitron', sans-serif; font-size: 0.9rem;">اینستاگرام</h3>
+                        <p style="font-size: 0.8rem;">erfan._.ab1383</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-compact">
+        <div class="container">
+            <p>© 2025 Erfan Abdollahi. تمام حقوق محفوظ است.</p>
+        </div>
+    </footer>
+
+    <script>
+        // اسکرول اسنپ و نویگیشن
+        const sections = document.querySelectorAll('.snap-section');
+        const navLinks = document.querySelectorAll('.nav-dock-links a');
+        const scrollDots = document.querySelectorAll('.scroll-dot-compact');
+
+        // فعال کردن لینک نویگیشن
+        function setActiveLink() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+
+            scrollDots.forEach(dot => {
+                dot.classList.remove('active');
+                if (dot.getAttribute('data-section') === current) {
+                    dot.classList.add('active');
+                }
+            });
+        }
+
+        // اسکرول به بخش مورد نظر
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // کلیک روی دات‌های اسکرول
+        scrollDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const sectionId = dot.getAttribute('data-section');
+                scrollToSection(sectionId);
+            });
+        });
+
+        // کلیک روی لینک‌های نویگیشن
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const sectionId = link.getAttribute('href').substring(1);
+                scrollToSection(sectionId);
+            });
+        });
+
+        // انیمیشن اسکرول
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // به‌روزرسانی نویگیشن هنگام اسکرول
+        window.addEventListener('scroll', setActiveLink);
+
+        // بارگذاری اولیه
+        setActiveLink();
+    </script>
+</body>
+</html>
